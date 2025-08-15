@@ -1,37 +1,46 @@
-body {
-    font-family: 'Poppins', sans-serif;
-}
-
-.gradient-bg {
-    background-image: url('/static/img/img1.jpg');
+/* Hero Section */
+#inicio {
+    background-image: url("../img/img1.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-/* Personalización de flechas Swiper de las termas*/
-.swiper-button-next, .swiper-button-prev {
-    color: #ea580c; 
-    width: 48px;
-    height: 48px;
-    background: rgba(255,255,255,0.85);
-    border-radius: 9999px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    transition: background 0.2s, color 0.2s;
-}
-.swiper-button-next:hover, .swiper-button-prev:hover {
-    background: #ea580c;
-    color: #fff;
-}
-.swiper-button-next:after, .swiper-button-prev:after {
-    font-size: 2rem;
-    font-weight: bold;
+/* Sobre Nosotros */
+#nosotros {
+    background-image: url("../img/sobrenosotros.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.contacto-bg {
+/* Contacto */
+#contacto {
     background-color: #dfdede;
 }
 
-.nosotros-bg {
-    background-color: #3f573e;
+/* Swiper Images */
+.swiper-slide img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/*  Swiper  */
+.swiper-button-next,
+.swiper-button-prev {
+    width: 3rem;  
+    height: 3rem;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #f97316; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: #f97316;
+    color: white;
 }

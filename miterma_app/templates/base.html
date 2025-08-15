@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MiTerma{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 🔹 Barra de navegación -->
+    <header class="fixed inset-x-0 top-0 z-50">
+        <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between rounded-b-2xl bg-white shadow">
+            <!-- Logo -->
+            <a href="#" class="flex items-center py-4 px-2">
+                <img src="{% static 'img/MiTerma1.png' %}" alt="Logo MiTerma" class="h-16 w-16 mr-2 rounded-full" />
+                <span class="font-semibold text-2xl text-orange-600">MiTerma</span>
+            </a>
+
+        <!-- Menú de escritorio -->
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#sobre" class="px-2 py-2 text-gray-700 hover:text-orange-700 transition">Sobre nosotros</a>
+                <a href="#asociadas" class="px-2 py-2 text-gray-700 hover:text-orange-700 transition">Termas asociadas</a>
+                <a href="#contacto" class="px-2 py-2 text-gray-700 hover:text-orange-700 transition">Contacto</a>
+            </div>
+
+        <!-- Botones de escritorio -->
+            <div class="hidden md:flex items-center gap-3 pr-3">
+                <a href="#iniciar" class="px-4 py-2 text-sm rounded-full border border-orange-700 text-orange-700 hover:bg-cyan-50 transition">Iniciar Sesión</a>
+                <a href="#registrar" class="px-4 py-2 text-sm rounded-full bg-orange-700 text-white hover:bg-orange-800 shadow transition">Registrarse</a>
+            </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- 🔹 Contenido específico de cada página -->
+    <main class="pt-16">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- 🔹 Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">MiTerma</h3>
+                    <p class="text-gray-400">Tu puerta de entrada a las aguas termales más sorprendentes de Chile.</p>
+                </div>
+                <div class="md:text-right">
+                    <h4 class="text-lg font-semibold mb-4">Contáctanos</h4>
+                    <address class="text-gray-400 not-italic">
+                        <p>Avenida Termal 1234, Temuco</p>
+                        <p class="mt-2">+56 9 58070480</p>
+                        <p class="mt-2">miterma@gmail.com</p>
+                    </address>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>© 2025 MiTerma. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    {% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static 'javascript/base.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

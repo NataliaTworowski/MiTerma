@@ -1,171 +1,151 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiTerma</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <!-- Swiper.js CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Barra de navegación -->
-    <nav class="bg-gray-700 shadow-lg">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between">
-                <div class="flex space-x-7">
-                    <div>
-                        <!-- Logo -->
-                        <a href="#" class="flex items-center py-4 px-2">
-                            <img src="{% static 'img/MiTerma.png' %}" alt="Logo MiTerma" class="h-16 w-16 mr-2 rounded-full" />
-                            <span class="font-semibold text-2xl text-orange-600">MiTerma</span>
 
-                        </a>
-                    </div>
-                </div>
-                <!-- Botones -->
-                <div class="hidden md:flex items-center space-x-3">
-                    <a href="#termas" class="py-4 px-2 text-white hover:text-orange-600 transition duration-300">Termas asociadas</a>
-                    <a href="#nosotros" class="py-4 px-2 text-white hover:text-orange-600 transition duration-300">Nosotros</a>
-                    <a href="#contacto" class="py-4 px-2 text-white hover:text-orange-600 transition duration-300">Contacto</a>
-                    <a href="#" class="py-2 px-3 font-medium text-white bg-orange-600 rounded-md hover:bg-yellow-400 transition duration-300">Iniciar Sesión</a>
-                    <a href="#" class="py-2 px-3 font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-400 transition duration-300">Registrarse</a>
-                </div>
-            </div>
-    </nav>
-    <!-- Hero Section -->
-    <section id="inicio" class="gradient-bg text-white py-64">
+{% block title %}MiTerma{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section id="inicio" class="text-white pt-60 pb-96 -mt-16 relative z-10">
     <div class="container mx-auto px-6 text-center">
         <h1 class="text-5xl font-bold mb-6">Descubre las mejores termas de Chile</h1>
         <p class="text-xl mb-12">Relájate y rejuvenece en los paisajes naturales más sorprendentes de nuestro país</p>
-        <a href="#termas" class="bg-white text-orange-600 font-bold rounded-full py-3 px-8 hover:bg-gray-100 transition duration-300">Explorar Termas</a>
+        <a href="#termas" class="bg-white text-orange-600 font-bold rounded-full py-3 px-8 hover:bg-gray-100 transition duration-300">
+            Explorar Termas
+        </a>
     </div>
 </section>
 
-    <!-- Termas Asociadas -->
-    <section id="termas" class="py-16 bg-gray-200">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-orange-800 mb-12">Termas Asociadas</h2>
-            <!-- Swiper -->
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <!-- Terma 1 -->
-                    <div class="swiper-slide">
-                        <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                            <div class="relative pb-48 overflow-hidden">
-                                <img class="absolute inset-0 h-full w-full object-cover" src="{% static 'img/terma1.jpg' %}" alt="Termas Geométricas, bosque verde con piscinas de agua caliente de color turquesa rodeadas de pasarelas de madera">
-                            </div>
-                            <div class="p-4">
-                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Termas de Chillán</h3>
-                            </div>
+<!-- Termas Asociadas -->
+<section id="termas" class="py-16 bg-gray-200">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-orange-800 mb-12">Termas Asociadas</h2>
+        
+        <!-- Swiper Container -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Terma 1 -->
+                <div class="swiper-slide">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="relative pb-48 overflow-hidden">
+                            <img src="{% static 'img/terma1.jpg' %}" alt="Termas de Chillán con aguas termales rodeadas de naturaleza">
                         </div>
-                    </div>
-                    <!-- Terma 2 -->
-                    <div class="swiper-slide">
-                        <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
-                            <div class="relative pb-48 overflow-hidden">
-                                <img class="absolute inset-0 h-full w-full object-cover" src="{% static 'img/terma1.jpg' %}" alt="Termas Geométricas, bosque verde con piscinas de agua caliente de color turquesa rodeadas de pasarelas de madera">
-                            </div>
-                            <div class="p-4">
-                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Termas descnksnckjsnckjnskc</h3>
-                            </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Termas de Chillán</h3>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-            <div class="text-center mt-12">
-                <a href="#" class="inline-block bg-orange-700 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-600 transition duration-300">Ver todas las termas</a>
-            </div>
-        </div>
-    </section>
-    <!-- script de json para que funcione el swiper -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="{% static 'json/index.js' %}"></script>
-    
-    <!-- Sobre nosotros -->
-    <section id="nosotros" class="py-16 nosotros-bg">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-white mb-12">Sobre Nosotros</h2>
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="bg-white p-8 rounded-lg shadow-md mb-8">
-                        <h3 class="text-2xl font-semibold text-green-600 mb-4">Nuestra Misión</h3>
-                        <p class="text-gray-700">Facilitar el acceso a las maravillas termales de Chile, promoviendo el bienestar y la conexión con la naturaleza, a través de un servicio personalizado y tecnologías innovadoras.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-semibold text-green-600 mb-4">Nuestra Visión</h3>
-                        <p class="text-gray-700">Ser la plataforma líder en turismo termal en Chile, reconocida por contribuir al desarrollo sostenible de las comunidades locales y la conservación de estos recursos naturales únicos.</p>
-                    </div>
-                </div>
-                <div>
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c4ed0202-ccec-447d-bb05-40aa629bec66.png" alt="Equipo diverso sonriendo en oficina moderna con plantas, trabajando en ordenadores" class="rounded-lg shadow-lg">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Contacto -->
-    <section id="contacto" class="py-16 contacto-bg">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Contáctanos</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-gradient-to-r from-blue-400 to-green-400 p-1 rounded-lg">
-                    <div class="bg-white p-8 rounded-lg">
-                        <form>
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="nombre" class="block text-gray-700 font-medium mb-2">Nombre</label>
-                                    <input type="text" id="nombre" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-gray-700 font-medium mb-2">Correo Electrónico</label>
-                                    <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
-                                </div>
-                            </div>
-                            <div class="mt-6">
-                                <label for="asunto" class="block text-gray-700 font-medium mb-2">Asunto</label>
-                                <input type="text" id="asunto" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
-                            </div>
-                            <div class="mt-6">
-                                <label for="mensaje" class="block text-gray-700 font-medium mb-2">Mensaje</label>
-                                <textarea id="mensaje" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
-                            </div>
-                            <div class="mt-8">
-                                <button type="submit" class="w-full bg-green-500 text-white font-semibold py-3 px-4 rounded-lg hover:bg-green-600 transition duration-300">Enviar Mensaje</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">MiTerma</h3>
-                    <p class="text-gray-400">Tu puerta de entrada a las aguas termales más sorprendentes de Chile.</p>
+                <!-- Terma 2 -->
+                <div class="swiper-slide">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="relative pb-48 overflow-hidden">
+                            <img src="{% static 'img/terma1.jpg' %}" alt="Termas Descanso con piscinas naturales de agua termal">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Termas Descanso</h3>
+                        </div>
+                    </div>
                 </div>
-                <div class="md:text-right">
-                    <h4 class="text-lg font-semibold mb-4">Contáctanos</h4>
-                    <address class="text-gray-400 not-italic">
-                        <p>Avenida Termal 1234, Temuco</p>
-                        <p class="mt-2">+56 9 58070480</p>
-                        <p class="mt-2">miterma@gmail.com</p>
-                    </address>
+
+                <!-- Terma 3 -->
+                <div class="swiper-slide">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="relative pb-48 overflow-hidden">
+                            <img src="{% static 'img/terma1.jpg' %}" alt="Termas Geométricas con arquitectura de madera y aguas cristalinas">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Termas Geométricas</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
-                <p>© 2025 MiTerma. Todos los derechos reservados.</p>
+
+            <!-- Swiper Controls -->
+            <div class="swiper-pagination mt-8"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="#" class="inline-block bg-orange-700 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-600 transition duration-300">
+                Ver todas las termas
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Sobre Nosotros -->
+<section id="nosotros" class="relative py-24">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-center text-white mb-16 drop-shadow-lg">Sobre Nosotros</h2>
+        <div class="flex flex-col md:flex-row gap-10 items-stretch justify-center">
+            <!-- Misión -->
+            <div class="bg-white bg-opacity-90 backdrop-blur-md p-10 rounded-2xl shadow-xl transform transition duration-500 hover:scale-105 w-full md:w-1/2">
+                <h3 class="text-3xl font-bold text-green-800 mb-6">Nuestra Misión</h3>
+                <p class="text-gray-800 text-lg leading-relaxed">
+                    Facilitar el acceso a las maravillas termales de Chile, promoviendo el bienestar y la conexión con la naturaleza, a través de un servicio personalizado y tecnologías innovadoras.
+                </p>
+            </div>
+
+            <!-- Visión -->
+            <div class="bg-white bg-opacity-90 backdrop-blur-md p-10 rounded-2xl shadow-xl transform transition duration-500 hover:scale-105 w-full md:w-1/2">
+                <h3 class="text-3xl font-bold text-green-800 mb-6">Nuestra Visión</h3>
+                <p class="text-gray-800 text-lg leading-relaxed">
+                    Ser la plataforma líder en turismo termal en Chile, reconocida por contribuir al desarrollo sostenible de las comunidades locales y la conservación de estos recursos naturales únicos.
+                </p>
             </div>
         </div>
-    </footer>
-</body>
-</html>
+    </div>
+</section>
+
+<!-- Contacto -->
+<section id="contacto" class="py-16">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-orange-800 mb-12">Contáctanos</h2>
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-gradient-to-r from-orange-400 to-green-400 p-1 rounded-lg">
+                <div class="bg-white p-8 rounded-lg">
+                    <form action="#" method="post">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="nombre" class="block text-orange-700 font-medium mb-2">Nombre</label>
+                                <input type="text" id="nombre" name="nombre" class="w-full px-4 py-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-orange-700 font-medium mb-2">Correo Electrónico</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" required>
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <label for="asunto" class="block text-orange-700 font-medium mb-2">Asunto</label>
+                            <input type="text" id="asunto" name="asunto" class="w-full px-4 py-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" required>
+                        </div>
+
+                        <div class="mt-6">
+                            <label for="mensaje" class="block text-orange-700 font-medium mb-2">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" class="w-full px-4 py-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400" required></textarea>
+                        </div>
+
+                        <div class="mt-8">
+                            <button type="submit" class="w-full bg-orange-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-green-600 transition duration-300">
+                                Enviar Mensaje
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/index.js' %}"></script>
+{% endblock %}
