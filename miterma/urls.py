@@ -21,4 +21,6 @@ from miterma_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('login/', views.login, name='login'),
+    path('registrarse/', views.registrarse, name='registrarse'),
 ]

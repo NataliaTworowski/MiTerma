@@ -8,9 +8,9 @@
     
     <!-- CSS base -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Configuración personalizada de Tailwind -->
     <script>
         tailwind.config = {
@@ -23,35 +23,40 @@
             }
         }
     </script>
-    
+
     <!-- Bloque para CSS adicional de cada página -->
     {% block head %}{% endblock %}
 </head>
 <body class="font-poppins">
-    
+
     <!-- Barra de navegación -->
     <header class="fixed inset-x-0 top-0 z-50">
         <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="flex h-16 items-center justify-between rounded-b-2xl bg-white shadow">
+            <div class="flex h-16 items-center justify-between rounded-b-2xl bg-orange-400 shadow">
                 <!-- Logo -->
                 <a href="#" class="flex items-center py-4 px-2">
-                    <img src="{% static 'img/MiTerma1.png' %}" alt="Logo MiTerma" class="h-16 w-16 mr-2 rounded-full" />
-                    <span class="font-semibold text-2xl text-orange-600">MiTerma</span>
+                    <img src="{% static 'img/MiTerma.png' %}" alt="Logo MiTerma" class="h-16 w-16 mr-2 rounded-full" />
+                    <span class="font-semibold text-2xl text-white">MiTerma</span>
                 </a>
-                
+
                 <!-- Menú de escritorio -->
                 <div class="hidden md:flex items-center gap-6">
-                    <a href="#nosotros" class="px-2 py-2 text-gray-700 hover:text-orange-700 transition">Sobre nosotros</a>
-                    <a href="#termas" class="px-2 py-2 text-gray-700 hover:text-orange-700 transition">Termas asociadas</a>
-                    <a href="#contacto" class="px-2 py-2 text-gray-700 hover:text-orange-700 transition">Contacto</a>
+                    <a href="#nosotros" class="px-2 py-2 text-white hover:text-yellow-200 transition">Sobre nosotros</a>
+                    <a href="#termas" class="px-2 py-2 text-white hover:text-yellow-200 transition">Termas asociadas</a>
+                    <a href="#contacto" class="px-2 py-2 text-white hover:text-yellow-200 transition">Contacto</a>
                 </div>
-                
+
                 <!-- Botones de escritorio -->
                 <div class="hidden md:flex items-center gap-3 pr-3">
-                    <a href="#iniciar" class="px-4 py-2 text-sm rounded-full border border-orange-700 text-orange-700 hover:bg-orange-50 transition">Iniciar Sesión</a>
-                    <a href="#registrar" class="px-4 py-2 text-sm rounded-full bg-orange-700 text-white hover:bg-orange-800 shadow transition">Registrarse</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'carrito' %}" class="px-4 py-2 text-sm rounded-full border border-white text-white hover:bg-yellow-700 transition">Carrito</a>
+                        <a href="{% url 'logout' %}" class="px-4 py-2 text-sm rounded-full bg-white text-orange-700 hover:bg-yellow-200 shadow transition">Cerrar Sesión</a>
+                    {% else %}
+                        <button id="login-btn" class="px-4 py-2 text-sm rounded-full border border-white text-white hover:bg-yellow-700 transition">Iniciar Sesión</button>
+                        <a href="{% url 'registrarse' %}" class="px-4 py-2 text-sm rounded-full bg-white text-orange-700 hover:bg-yellow-200 shadow transition">Registrarse</a>
+                    {% endif %}
                 </div>
-                
+
                 <!-- Botón menú móvil -->
                 <div class="md:hidden">
                     <button type="button" class="text-gray-700 hover:text-orange-700 focus:outline-none focus:text-orange-700" id="mobile-menu-button">
@@ -61,7 +66,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <!-- Menú móvil -->
             <div class="md:hidden hidden" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1 bg-white shadow-lg rounded-b-2xl">
@@ -69,19 +74,24 @@
                     <a href="#termas" class="block px-3 py-2 text-gray-700 hover:text-orange-700 transition">Termas asociadas</a>
                     <a href="#contacto" class="block px-3 py-2 text-gray-700 hover:text-orange-700 transition">Contacto</a>
                     <div class="pt-4 pb-2 border-t border-gray-200">
-                        <a href="#iniciar" class="block px-3 py-2 text-sm text-orange-700 hover:bg-orange-50 transition rounded">Iniciar Sesión</a>
-                        <a href="#registrar" class="block px-3 py-2 text-sm bg-orange-700 text-white hover:bg-orange-800 transition rounded mx-3 mt-2 text-center">Registrarse</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'carrito' %}" class="block px-3 py-2 text-sm text-orange-700 hover:bg-orange-50 transition rounded">Carrito</a>
+                            <a href="{% url 'logout' %}" class="block px-3 py-2 text-sm bg-orange-700 text-white hover:bg-orange-800 transition rounded mx-3 mt-2 text-center">Cerrar Sesión</a>
+                        {% else %}
+                            <button id="login-btn-mobile" class="block px-3 py-2 text-sm text-orange-700 hover:bg-orange-50 transition rounded w-full text-left">Iniciar Sesión</button>
+                            <a href="{% url 'registrarse' %}" class="block px-3 py-2 text-sm bg-orange-700 text-white hover:bg-orange-800 transition rounded mx-3 mt-2 text-center">Registrarse</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </nav>
     </header>
-    
+
     <!-- Contenido específico de cada página -->
     <main class="pt-16">
         {% block content %}{% endblock %}
     </main>
-    
+
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-6">
@@ -104,19 +114,69 @@
             </div>
         </div>
     </footer>
-    
+
+    <!-- Modal de Login -->
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl transform transition-all">
+            <!-- Header del modal -->
+            <div class="bg-gradient-to-r from-orange-400 to-green-500 text-white p-6 text-center relative">
+                <button id="close-modal" class="absolute top-4 right-4 text-white hover:text-gray-200 text-2xl">&times;</button>
+                <h2 class="text-2xl font-bold mb-2">MiTerma</h2>
+                <p class="text-white/90">Ingresa a tu cuenta para continuar</p>
+            </div>
+
+            <!-- Formulario de login -->
+            <div class="p-6">
+                <form method="POST" action="{% url 'login' %}" class="space-y-4">
+                    {% csrf_token %}
+                    
+                    <div>
+                        <label for="{{ form.email.id_for_label }}" class="block text-gray-700 font-medium mb-2">Email</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="text-red-500 text-sm mt-1">{{ form.email.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div>
+                        <label for="{{ form.password.id_for_label }}" class="block text-gray-700 font-medium mb-2">Contraseña</label>
+                        {{ form.password }}
+                        {% if form.password.errors %}
+                            <div class="text-red-500 text-sm mt-1">{{ form.password.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    {% if form.non_field_errors %}
+                        <div class="text-red-500 text-sm">{{ form.non_field_errors }}</div>
+                    {% endif %}
+                    
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded border-gray-300 text-orange-600 focus:ring-orange-500">
+                            <span class="ml-2 text-sm text-gray-600">Recordar sesión</span>
+                        </label>
+                        <a href="#" class="text-sm text-orange-600 hover:text-orange-700 transition-colors">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-orange-400 to-green-500 text-white font-semibold py-3 px-4 rounded-lg hover:from-orange-500 hover:to-green-600 transition duration-300">
+                        Iniciar Sesión
+                    </button>
+                </form>
+
+                <!-- Registro -->
+                <div class="text-center mt-6">
+                    <p class="text-gray-600">
+                        ¿No tienes una cuenta? 
+                        <a href="#" class="text-orange-600 hover:text-orange-700 font-semibold transition-colors">Regístrate ahora</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts base -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="{% static 'js/base.js' %}"></script>
-    
-    <!-- Script para menú móvil -->
-    <script>
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-    </script>
-    
+    <script src="{% static 'javascript/base.js' %}"></script>
+
     <!-- Bloque para scripts adicionales de cada página -->
     {% block scripts %}{% endblock %}
 </body>

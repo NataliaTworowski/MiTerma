@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - MiTerma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-orange-50 to-orange-100 min-h-screen">
+    
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
+            
+            <!-- Logo/Título -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-orange-600 mb-2">MiTerma</h1>
+                <p class="text-gray-600">Crea tu cuenta</p>
+            </div>
+            
+            <!-- Formulario de Registro -->
+            <form method="post" class="space-y-6">
+                {% csrf_token %}
+                
+                <!-- Errores del formulario -->
+                {% if form.non_field_errors %}
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+                
+                <!-- Nombre -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        Nombre
+                    </label>
+                    {{ form.nombre }}
+                    {% if form.nombre.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.nombre.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Apellido -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        Apellido
+                    </label>
+                    {{ form.apellido }}
+                    {% if form.apellido.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.apellido.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Email -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        Email
+                    </label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Teléfono -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        Teléfono (opcional)
+                    </label>
+                    {{ form.telefono }}
+                    {% if form.telefono.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.telefono.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Contraseña -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        Contraseña
+                    </label>
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.password.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Confirmar Contraseña -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        Confirmar Contraseña
+                    </label>
+                    {{ form.confirmar_password }}
+                    {% if form.confirmar_password.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.confirmar_password.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Botón de Registro -->
+                <button type="submit" 
+                        class="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 rounded-lg transition duration-300">
+                    Registrarse
+                </button>
+            </form>
+            
+            <!-- Link a Login -->
+            <div class="text-center mt-6">
+                <p class="text-gray-600">
+                    ¿Ya tienes cuenta? 
+                    <a href="{% url 'index' %}" class="text-orange-600 hover:text-orange-700 font-medium">
+                        Inicia sesión
+                    </a>
+                </p>
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+</html>
